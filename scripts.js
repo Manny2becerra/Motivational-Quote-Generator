@@ -73,22 +73,22 @@ var Color = ['B', 'Y', 'G', 'H', 'T', 'L', 'K', 'P', 'F', 'S', 'N', 'O', 'Z', 'W
 var ColorsUsed = [];
 var ColorSelected;
 
-function N() {
+function RandomNumber() {
     let RN =  Math.floor(Math.random()*15 + 1)
     return RN;
 }
 
 
 
-function RandomN() {
-  Select = N();
+function getRandomQuote() {
+  Select = RandomNumber();
   if (QuotesUsed.length === 16) {
     QuotesUsed = [];
   }
   while (QuotesUsed.includes(Select)) {
-    Select = N() + 1;
+    Select = RandomNumber() + 1;
     if (Select == 16) {
-      Select = N() - 1;
+      Select = RandomNumber() - 1;
     }
   }
 
@@ -98,7 +98,7 @@ function RandomN() {
 
 
 function RandomColor() {
-  ColorSelected = N();
+  ColorSelected = RandomNumber();
 
   if (ColorsUsed.length === 16) {
     ColorsUsed = [];
@@ -106,9 +106,9 @@ function RandomColor() {
 
 
   while (ColorsUsed.includes(ColorSelected)) {
-    ColorSelected = N() + 1;
+    ColorSelected = RandomNumber() + 1;
     if (ColorSelected == 16) {
-      ColorSelected = N() - 1;
+      ColorSelected = RandomNumber() - 1;
     }
   }
 
@@ -123,14 +123,14 @@ console.log(QuotesUsed);
 
 
 
-function RandomQuote() {
-  let QuoteSelected = RandomN();
+function printQuote() {
+  let QuoteSelected = getRandomQuote();
     console.log(QuotesUsed);
     return document.querySelector('main').innerHTML = `
       <main class = "${Color[RandomColor()]}">
         <h1>${Quotes[QuoteSelected].quote} </h1>
         <h2> ${Quotes[QuoteSelected].author} </h2>
-          <button type = "button" onclick = "RandomQuote()">
+          <button type = "button" onclick = "printQuote()">
             <p>New quote</p>
           </button>
         <script src = "scripts.js"> </script>
